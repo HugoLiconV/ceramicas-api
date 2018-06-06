@@ -19,6 +19,10 @@ if (process.env.NODE_ENV !== 'production') {
   })
 }
 
+
+const dbuser = requireProcessEnv('DB_USER')
+const dbpassword = requireProcessEnv('DB_PASSWORD')
+
 const config = {
   all: {
     env: process.env.NODE_ENV || 'development',
@@ -55,7 +59,7 @@ const config = {
     ip: process.env.IP || undefined,
     port: process.env.PORT || 8080,
     mongo: {
-      uri: process.env.MONGODB_URI || 'mongodb://localhost/ceramica'
+      uri: process.env.MONGODB_URI || `mongodb://${dbuser}:${dbpassword}@ds251210.mlab.com:51210/ceramicas`
     }
   }
 }
